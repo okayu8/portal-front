@@ -4,10 +4,13 @@ const outputPath = path.resolve(__dirname, "dist");
 
 module.exports = {
   mode: "development",
-  entry: "./src/index.tsx",
+  entry: {
+    main: "./src/index.tsx",
+    login: "./src/login.tsx"
+  },
   output: {
     path: outputPath,
-    filename: "main.js",
+    filename: "[name].js",
   },
   module: {
     rules: [
@@ -34,7 +37,13 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: "./src/index.html",
+      chunks: ['main'],
       filename: "./index.html",
+    }),
+    new HtmlWebpackPlugin({
+      template: "./src/login.html",
+      chunks: ['login'],
+      filename: "./login.html",
     }),
   ],
 };
