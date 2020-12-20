@@ -6,18 +6,26 @@
   "scripts": {
     "build": "webpack",
     "watch": "webpack -w",
-    "start": "webpack-dev-server --open"
+    "start": "webpack-dev-server --open",
+    "lint-init": "eslint --init"
   },
   "dependencies": {
-    "@types/react": "^16.9.48",
-    "@types/react-dom": "^16.9.8",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "styled-components": "^5.2.1"
   },
   "devDependencies": {
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "@types/styled-components": "^5.1.5",
+    "@typescript-eslint/eslint-plugin": "^4.9.1",
+    "@typescript-eslint/parser": "^4.9.1",
+    "eslint": "^7.15.0",
+    "eslint-plugin-react": "^7.21.5",
     "html-webpack-plugin": "^4.3.0",
-    "ts-loader": "^8.0.3",
-    "typescript": "^4.0.2",
+    "prettier": "2.2.1",
+    "ts-loader": "^8.0.12",
+    "typescript": "^4.1.3",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0"
