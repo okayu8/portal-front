@@ -7,9 +7,10 @@
     "dist": "webpack",
     "watch": "webpack -w",
     "start": "webpack-dev-server --open",
-    "format": "prettier --write src/**/*.{ts,tsx}",
-    "format:ckeck": "prettier --check src/**/*.{ts,tsx}",
-    "lint": "eslint \"./src/**/*.{ts,tsx}\"",
+    "format": "prettier --write \"./src/**/*.{ts,tsx}\"",
+    "format:ckeck": "prettier --check \"./src/**/*.{ts,tsx}\"",
+    "lint": "eslint \"./src/**/*.{js,ts,tsx}\"",
+    "lint:fix": "eslint \"./src/**/*.{js,ts,tsx}\" --fix",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },

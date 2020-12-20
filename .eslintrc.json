@@ -8,6 +8,7 @@
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:react/recommended",
+    "prettier",
     "prettier/@typescript-eslint"
   ],
   "rules": {
@@ -15,14 +16,10 @@
   },
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "ecmaFeatures": {
-      "jsx": true
-    },
-    "ecmaVersion": 2020,
-    "sourceType": "module"
+    "project": "./tsconfig.json"
   },
   "plugins": ["react", "react-hooks", "@typescript-eslint"],
   "settings": {
-    "react": {"version": "detect"}
+    "react": { "version": "detect" }
   }
 }
