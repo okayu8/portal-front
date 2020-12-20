@@ -1,49 +1,50 @@
-const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const outputPath = path.resolve(__dirname, "dist");
+/* eslint @typescript-eslint/no-var-requires: 0 */
+const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const outputPath = path.resolve(__dirname, 'dist')
 
 module.exports = {
-  mode: "development",
+  mode: 'development',
   entry: {
-    main: "./src/index.tsx",
-    login: "./src/login.tsx"
+    main: './src/index.tsx',
+    login: './src/login.tsx',
   },
   output: {
     path: outputPath,
-    filename: "[name].js",
+    filename: '[name].js',
   },
   module: {
     rules: [
       {
         test: /\.tsx?$/,
-        use: "ts-loader",
+        use: 'ts-loader',
       },
     ],
   },
   resolve: {
     extensions: [
       // importできるファイルの拡張子
-      ".ts",
-      ".tsx",
-      ".js",
-      ".json",
+      '.ts',
+      '.tsx',
+      '.js',
+      '.json',
     ],
   },
-  devtool: "inline-source-map", // sourcemapを使えるようにする
+  devtool: 'inline-source-map', // sourcemapを使えるようにする
   devServer: {
     // 開発用のローカルサーバの設定
     contentBase: outputPath,
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "./src/index.html",
+      template: './src/index.html',
       chunks: ['main'],
-      filename: "./index.html",
+      filename: './index.html',
     }),
     new HtmlWebpackPlugin({
-      template: "./src/login.html",
+      template: './src/login.html',
       chunks: ['login'],
-      filename: "./login.html",
+      filename: './login.html',
     }),
   ],
-};
+}
