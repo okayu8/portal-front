@@ -143,7 +143,6 @@ export const Button: React.FC<Props> = ({
       onMouseUp={onMouseUp_}
       tabIndex={0}
     >
-      {' '}
       {children}
     </Button_>
   )
