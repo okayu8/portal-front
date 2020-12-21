@@ -142,6 +142,7 @@ export const Button: React.FC<Props> = ({
       onMouseDown={onMouseDown_}
       onMouseUp={onMouseUp_}
       tabIndex={0}
+      disabled={disabled}
     >
       {children}
     </Button_>
