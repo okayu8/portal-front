@@ -4,7 +4,8 @@ export const Color = {
   cover_white: 'rgba(255,255,255,0.64)',
 
   // Dark
-  very_light_gray: '#ddd',
+  very_light_gray: '#eee',
+  light_gray: '#ddd',
   cover_light_gray: 'rgba(0,0,0,0.38)',
   cover_dark_gray: 'rgba(0,0,0,0.64)',
   cover_black: 'rgba(0,0,0,0.87)',
