@@ -1,6 +1,8 @@
 import React, { useState, useCallback, useMemo } from 'react'
 import styled from 'styled-components'
 
+import { Color } from '../../../const/color'
+
 export type Props = {
   color?: 'default' | 'primary' | 'danger'
   children?: React.ReactNode
@@ -16,19 +18,19 @@ export type Props = {
 
 const colorStyles_ = {
   default: {
-    backgroundColor: '#ddd',
-    borderColor: 'rgba(0,0,0,0.38)',
-    color: 'rgba(0,0,0,0.87)',
+    backgroundColor: Color.light_gray,
+    border: `1px solid ${Color.very_light_gray}`,
+    color: Color.black,
   },
   primary: {
-    backgroundColor: '#1A9AB9',
-    borderColor: 'rgba(255,255,255,0.38)',
-    color: '#fff',
+    backgroundColor: Color.brand_blue,
+    border: `1px solid ${Color.cover_white}`,
+    color: Color.white,
   },
   danger: {
-    backgroundColor: '#FF6767',
-    borderColor: 'rgba(255,255,255,0.38)',
-    color: '#fff',
+    backgroundColor: Color.danger_red,
+    border: `1px solid ${Color.cover_white}`,
+    color: Color.white,
   },
 } as const
 
