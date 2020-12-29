@@ -1,7 +1,7 @@
 export const Color = {
   // Light
   white: '#fff',
-  cover_white: 'rgba(255,255,255,0.38)',
+  cover_white: 'rgba(255,255,255,0.64)',
 
   // Dark
   light_gray: '#ddd',

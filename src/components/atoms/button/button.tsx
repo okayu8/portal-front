@@ -19,17 +19,17 @@ export type Props = {
 const colorStyles_ = {
   default: {
     backgroundColor: Color.light_gray,
-    borderColor: Color.very_light_gray,
+    border: `1px solid ${Color.very_light_gray}`,
     color: Color.black,
   },
   primary: {
     backgroundColor: Color.brand_blue,
-    borderColor: Color.cover_white,
+    border: `1px solid ${Color.cover_white}`,
     color: Color.white,
   },
   danger: {
     backgroundColor: Color.danger_red,
-    borderColor: Color.cover_white,
+    border: `1px solid ${Color.cover_white}`,
     color: Color.white,
   },
 } as const
