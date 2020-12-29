@@ -4,62 +4,62 @@ import styled from 'styled-components'
 import { Color } from '../../../const/color'
 
 export type Props = {
-  color?: 'default' | 'primary' | 'danger'
   children?: React.ReactNode
+  selected?: boolean
   disabled?: boolean
-  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void
-  onMouseEnter?: (event: React.MouseEvent<HTMLButtonElement>) => void
-  onMouseLeave?: (event: React.MouseEvent<HTMLButtonElement>) => void
-  onMouseDown?: (event: React.MouseEvent<HTMLButtonElement>) => void
-  onMouseUp?: (event: React.MouseEvent<HTMLButtonElement>) => void
-  onFocus?: (event: React.FocusEvent<HTMLButtonElement>) => void
-  onBlur?: (event: React.FocusEvent<HTMLButtonElement>) => void
+  onClick?: (event: React.MouseEvent<HTMLLIElement>) => void
+  onMouseEnter?: (event: React.MouseEvent<HTMLLIElement>) => void
+  onMouseLeave?: (event: React.MouseEvent<HTMLLIElement>) => void
+  onMouseDown?: (event: React.MouseEvent<HTMLLIElement>) => void
+  onMouseUp?: (event: React.MouseEvent<HTMLLIElement>) => void
+  onFocus?: (event: React.FocusEvent<HTMLLIElement>) => void
+  onBlur?: (event: React.FocusEvent<HTMLLIElement>) => void
 }
 
 const colorStyles = {
   default: {
-    backgroundColor: Color.very_light_gray,
-    border: `1px solid ${Color.cover_light_gray}`,
     color: Color.cover_black,
   },
-  primary: {
-    backgroundColor: Color.brand_blue,
-    border: `1px solid ${Color.cover_white}`,
-    color: Color.white,
+  selected: {
+    color: Color.brand_blue,
+    backgroundColor: Color.very_light_gray,
   },
-  danger: {
-    backgroundColor: Color.danger_red,
-    border: `1px solid ${Color.cover_white}`,
-    color: Color.white,
+  disabled: {
+    color: Color.cover_light_gray,
   },
 } as const
 
 const opacity = {
-  enabled: '1',
-  hover: '0.64',
-  focus: '0.48',
-  pressed: '0.48',
-  disabled: '0.38',
+  enabled: '0',
+  hover: '0.12',
+  focus: '0.24',
+  pressed: '0.24',
+  disabled: '0',
 } as const
 
-const Button_ = styled.button<{
-  colorStyles?: { [key: string]: string }
-  opacity?: string
-}>(({ colorStyles, opacity }) => ({
-  height: '32px',
-  paddingRight: '16px',
-  paddingLeft: '16px',
-  borderRadius: '4px',
-  boxSizing: 'border-box',
-  fontWeight: 600,
-  outline: 'none',
+const MenuItem_ = styled.li<{ colorStyles?: { [key: string]: string } }>(
+  ({ colorStyles }) => ({
+    padding: '8px 16px',
+    position: 'relative',
+    userSelect: 'none',
+    listStyle: 'none',
+    ...colorStyles,
+  })
+)
+
+const State_ = styled.div<{ opacity?: string }>(({ opacity }) => ({
+  position: 'absolute',
+  top: 0,
+  left: 0,
+  height: '100%',
+  width: '100%',
+  backgroundColor: Color.cover_black,
   opacity: opacity,
-  ...colorStyles,
 }))
 
-export const Button: React.FC<Props> = ({
-  color = 'default',
+export const MenuItem: React.FC<Props> = ({
   children,
+  selected,
   disabled,
   onClick,
   onMouseEnter,
@@ -78,14 +78,14 @@ export const Button: React.FC<Props> = ({
   }, [disabled, intaractionState])
 
   const onClick_ = useCallback(
-    (event: React.MouseEvent<HTMLButtonElement>) => {
+    (event: React.MouseEvent<HTMLLIElement>) => {
       if (onClick) onClick(event)
     },
     [onClick]
   )
 
   const onMouseEnter_ = useCallback(
-    (event: React.MouseEvent<HTMLButtonElement>) => {
+    (event: React.MouseEvent<HTMLLIElement>) => {
       setIntaractionState('hover')
       if (onMouseEnter) onMouseEnter(event)
     },
@@ -93,7 +93,7 @@ export const Button: React.FC<Props> = ({
   )
 
   const onMouseLeave_ = useCallback(
-    (event: React.MouseEvent<HTMLButtonElement>) => {
+    (event: React.MouseEvent<HTMLLIElement>) => {
       setIntaractionState('enabled')
       if (onMouseLeave) onMouseLeave(event)
     },
@@ -101,7 +101,7 @@ export const Button: React.FC<Props> = ({
   )
 
   const onFocus_ = useCallback(
-    (event: React.FocusEvent<HTMLButtonElement>) => {
+    (event: React.FocusEvent<HTMLLIElement>) => {
       setIntaractionState('focus')
       if (onFocus) onFocus(event)
     },
@@ -109,7 +109,7 @@ export const Button: React.FC<Props> = ({
   )
 
   const onBlur_ = useCallback(
-    (event: React.FocusEvent<HTMLButtonElement>) => {
+    (event: React.FocusEvent<HTMLLIElement>) => {
       setIntaractionState('enabled')
       if (onBlur) onBlur(event)
     },
@@ -117,7 +117,7 @@ export const Button: React.FC<Props> = ({
   )
 
   const onMouseDown_ = useCallback(
-    (event: React.MouseEvent<HTMLButtonElement>) => {
+    (event: React.MouseEvent<HTMLLIElement>) => {
       setIntaractionState('pressed')
       if (onMouseDown) onMouseDown(event)
     },
@@ -125,7 +125,7 @@ export const Button: React.FC<Props> = ({
   )
 
   const onMouseUp_ = useCallback(
-    (event: React.MouseEvent<HTMLButtonElement>) => {
+    (event: React.MouseEvent<HTMLLIElement>) => {
       setIntaractionState('hover')
       if (onMouseUp) onMouseUp(event)
     },
@@ -133,9 +133,10 @@ export const Button: React.FC<Props> = ({
   )
 
   return (
-    <Button_
-      colorStyles={colorStyles[color]}
-      opacity={opacity_}
+    <MenuItem_
+      colorStyles={
+        colorStyles[disabled ? 'disabled' : selected ? 'selected' : 'default']
+      }
       onClick={onClick_}
       onMouseEnter={onMouseEnter_}
       onMouseLeave={onMouseLeave_}
@@ -143,10 +144,9 @@ export const Button: React.FC<Props> = ({
       onBlur={onBlur_}
       onMouseDown={onMouseDown_}
       onMouseUp={onMouseUp_}
-      tabIndex={0}
-      disabled={disabled}
     >
       {children}
-    </Button_>
+      <State_ opacity={opacity_} />
+    </MenuItem_>
   )
 }
