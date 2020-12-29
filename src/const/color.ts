@@ -9,6 +9,6 @@ export const Color = {
   black: 'rgba(0,0,0,0.87)',
 
   // Brilliant
-  brand_blue: '1a9ab9',
+  brand_blue: '#1a9ab9',
   danger_red: '#ff6767',
 } as const
