@@ -2,6 +2,8 @@
 
 ## storybook
 
+基本的に Github Actions が勝手にデプロイしてくれる
+
 - storybook デプロイ:
   `yarn chromatic --project-token=[token]`
 - 失敗したら:
