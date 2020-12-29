@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useRef, useEffect } from 'react'
+import React, { useState, useCallback } from 'react'
 import styled from 'styled-components'
 
 import Button from '../../atoms/button'
@@ -21,7 +21,7 @@ const Wrapper_ = styled.div({
   boxShadow: `0 4px 4px ${Color.cover_light_gray}`,
   display: 'flex',
   justifyContent: 'space-between',
-  // fix の場合外部からつけるようにするか、検討中
+  // TODO: fix の場合外部からつけるようにするか、検討中
   // position: 'fixed',
   // top: 0,
   // left: 0,
