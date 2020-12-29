@@ -5,7 +5,7 @@ import MenuItem from './'
 import { Props } from './menuItem'
 
 export default {
-  title: 'menuItem',
+  title: 'MenuItem',
   component: MenuItem,
 } as Meta
 

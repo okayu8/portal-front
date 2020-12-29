@@ -43,7 +43,6 @@ const MenuItem_ = styled.li<{ colorStyles?: { [key: string]: string } }>(
     position: 'relative',
     userSelect: 'none',
     listStyle: 'none',
-    backgroundColor: Color.white,
     ...colorStyles,
   })
 )
