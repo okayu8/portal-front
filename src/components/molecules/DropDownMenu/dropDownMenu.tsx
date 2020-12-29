@@ -1,8 +1,6 @@
 import React, { useState, useCallback, useRef, useEffect } from 'react'
 import styled from 'styled-components'
 
-import Button from '../../atoms/button'
-
 export type Props = {
   children?: React.ReactNode
   triggerComponent?: React.ReactNode
