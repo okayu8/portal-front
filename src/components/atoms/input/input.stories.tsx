@@ -13,7 +13,7 @@ const Template: Story<Props> = (args) => {
   const [value, setValue] = useState<string>('テキスト')
   const onChange_ = useCallback(
     (event) => {
-      setValue(event.value)
+      setValue(event.target.value)
     },
     [value]
   )
