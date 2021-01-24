@@ -15,4 +15,5 @@ export const Color = {
   brand_blue: '#1a9ab9',
   danger_red: '#ff6767',
   light_blue: '#15b2f8',
+  new_orange: '#ff7831',
 } as const
