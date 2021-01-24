@@ -34,6 +34,7 @@ module.exports = {
   devServer: {
     // 開発用のローカルサーバの設定
     contentBase: outputPath,
+    historyApiFallback: true,
   },
   plugins: [
     new HtmlWebpackPlugin({
