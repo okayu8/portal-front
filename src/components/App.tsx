@@ -1,4 +1,5 @@
 import React from 'react'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { createGlobalStyle } from 'styled-components'
 
 import { Color } from '../const/color'
@@ -6,8 +7,26 @@ import { Color } from '../const/color'
 const App: React.FC = () => {
   return (
     <>
+      <Router>
+        <Switch>
+          <Route path="/news">
+            <div>NEWS</div>
+          </Route>
+          <Route path="/calendar">
+            <div>CALENDAR</div>
+          </Route>
+          <Route path="/todo">
+            <div>TO DO</div>
+          </Route>
+          <Route path="/settings">
+            <div>SETTINGS</div>
+          </Route>
+          <Route path="/">
+            <div>MY PAGE</div>
+          </Route>
+        </Switch>
+      </Router>
       <GlobalStyle />
-      <div>Hello App</div>
     </>
   )
 }
