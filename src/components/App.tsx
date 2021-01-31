@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { createGlobalStyle } from 'styled-components'
 
 import { Color } from '../const/color'
+import Template from './template'
 
 const App: React.FC = () => {
   return (
@@ -22,7 +23,7 @@ const App: React.FC = () => {
             <div>SETTINGS</div>
           </Route>
           <Route path="/">
-            <div>MY PAGE</div>
+            <Template currentPageNumber={0}>MY PAGE</Template>
           </Route>
         </Switch>
       </Router>
@@ -42,6 +43,10 @@ const GlobalStyle = createGlobalStyle`
     -ms-letter-spacing: .03em;
     letter-spacing: .03em;
     color: ${Color.cover_black};
+
+    body {
+      margin: 0;
+    }
   }
 `
 
