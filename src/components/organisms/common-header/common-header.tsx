@@ -1,5 +1,6 @@
-import React, { useState, useCallback } from 'react'
+import React, { useCallback } from 'react'
 import styled from 'styled-components'
+import { useHistory } from 'react-router-dom'
 
 import Button from '../../atoms/button'
 import MenuItem from '../../atoms/menuItem'
@@ -10,7 +11,7 @@ import { Color } from '../../../const/color'
 
 export type Props = {
   selectedPage?: number
-  pagesArray?: { id: number; name: string }[]
+  pagesArray?: { id: number; name: string; href: string }[]
   userName?: string
 }
 
@@ -66,15 +67,14 @@ export const CommonHeader: React.FC<Props> = ({
   pagesArray = [],
   userName,
 }) => {
-  const [selectedItem, setSelectedItem] = useState<number>(selectedPage)
+  const history = useHistory()
 
   const triggerComponent = (
-    <Button color="primary">▶︎ {pagesArray[selectedItem].name}</Button>
+    <Button color="primary">▶︎ {pagesArray[selectedPage].name}</Button>
   )
 
   const onClickMenuItem_ = useCallback((index: number) => {
-    // TODO: Global State: selectedPage の更新
-    setSelectedItem(index)
+    history.push(pagesArray[index].href)
   }, [])
 
   const onClickLogout_ = useCallback(() => {
@@ -93,7 +93,7 @@ export const CommonHeader: React.FC<Props> = ({
                   <MenuItem
                     key={index}
                     onClick={() => onClickMenuItem_(index)}
-                    selected={selectedItem === index}
+                    selected={selectedPage === index}
                   >
                     {value.name}
                   </MenuItem>
