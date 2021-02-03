@@ -8,6 +8,7 @@ export type Props = {
 }
 
 const Wrapper_ = styled.div({})
+const SideBarWrapper_ = styled.div({})
 const Content_ = styled.div({})
 
 export const Template: React.FC<Props> = ({ currentPageNumber, children }) => {
@@ -32,8 +33,8 @@ export const Template: React.FC<Props> = ({ currentPageNumber, children }) => {
         pagesArray={pagesArray}
         userName={userName}
       />
-      {/* TODO: add side bar component */}
       <Wrapper_>
+        <SideBarWrapper_>{/* TODO: add side bar component */}</SideBarWrapper_>
         <Content_>{children}</Content_>
         {/* TODO: add common footer */}
       </Wrapper_>
